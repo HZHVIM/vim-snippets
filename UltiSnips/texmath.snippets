@@ -82,4 +82,18 @@ snippet SI "SI-Unit" w
 \SI{${1:${VISUAL}}}{${2}}
 endsnippet
 
+
+##################
+#  OPTIMIZATION  #
+##################
+snippet opt "Standard Optimization Problem" b
+\begin{align*}
+	\begin{matrix}
+		\text{minimize} & ${1:Obj func} \\
+		\text{subject to} & ${2:Condition 1}\\
+		& ${3:Condition 2}\\
+	\end{matrix}
+\end{align*}
+endsnippet
+
 # vim:ft=snippets:
