@@ -30,8 +30,7 @@ $0
 endsnippet
 
 snippet main "main() (main)"
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	${VISUAL}$0
 	return 0;
 }
@@ -50,6 +49,21 @@ for (${4:int} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
 endsnippet
 
 snippet once "Include header once only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	snip.rv = ('%s' % name).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${VISUAL}$0
+
+#endif /* end of include guard: $1 */
+endsnippet
+
+snippet oncerand "Include header once only guard"
 #ifndef ${1:`!p
 if not snip.c:
 	import random, string
