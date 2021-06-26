@@ -117,4 +117,13 @@ snippet fund "function declaration" b
 ${1:void} ${2:function_name}($3);
 endsnippet
 
+snippet pause_def "definition for a pause function" b
+// #include <iostream>$0
+void pause() {
+	do {
+		std::cout << std::endl << "Press the Enter key to continue";
+	} while (std::cin.get() != '\n');
+}
+endsnippet
+
 # vim:ft=snippets:
