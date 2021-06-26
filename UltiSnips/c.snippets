@@ -51,16 +51,23 @@ endsnippet
 snippet once "Include header once only guard"
 #ifndef ${1:`!p
 if not snip.c:
-	import random, string
-	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
-	snip.rv = ('%s' % name).upper()
+	import string
+	git_found = False
+	path_left = os.path.dirname(os.path.abspath(path))
+	path_right = fn
+	while path_left != '':
+		if os.path.exists(os.path.join(path_left, '.git')):
+			git_found = True;
+			break
+		path_right = os.path.join(os.path.basename(path_left), path_right)
+		path_left = os.path.dirname(path_left)
+	if not git_found:
+		path_right = fn
+	snip.rv = re.sub(r'[^A-Za-z0-9]+','_', path_right).upper() + '_'
 else:
 	snip.rv = snip.c`}
 #define $1
-
-${VISUAL}$0
-
-#endif /* end of include guard: $1 */
+#endif /* end of include guard: $1 */$0
 endsnippet
 
 snippet oncerand "Include header once only guard"
