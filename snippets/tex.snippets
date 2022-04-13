@@ -38,6 +38,11 @@ snippet ali align(ed) environment
 		\\label{eq:${2}}
 		${0:${VISUAL}}
 	\\end{align$1}
+# Aligned
+snippet ald align environment
+	\\begin{aligned}
+		${0:${VISUAL}}
+	\\end{aligned}
 # Gather(ed)
 snippet gat gather(ed) environment
 	\\begin{gather${1:ed}}
@@ -222,6 +227,8 @@ snippet rm roman font text
 	\\textrm{${1:${VISUAL:text}}} ${0}
 snippet tt typewriter (monospace) text
 	\\texttt{${1:${VISUAL:text}}} ${0}
+snippet tx text
+	\\text{${1:${VISUAL:text}}}${0}
 #Math font
 snippet mf mathfrak
 	\\mathfrak{${1:${VISUAL:text}}} ${0}

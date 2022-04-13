@@ -80,6 +80,10 @@ snippet date "YYYY-MM-DD" w
 `!v strftime("%Y-%m-%d")`
 endsnippet
 
+snippet Date "Month DD, YYYY" w
+`!v strftime("%B %d, %Y")`
+endsnippet
+
 snippet sdate "System date format" w
 `!v strftime("%a %b %d %H:%M:%S %Z %Y")`
 endsnippet
@@ -104,11 +108,16 @@ endsnippet
 #  Misc  #
 ##########
 snippet todo "TODO comment" bw
-`!p snip.rv=get_comment_format()[0]` ${2:TODO}: $0${3: <${4:`!v strftime('%d-%m-%y')`}${5:, `!v g:snips_author`}>} `!p snip.rv=get_comment_format()[2]`
+`!p snip.rv=get_comment_format()[0]` TODO:`!v strftime("%a %b %d %H:%M:%S %Z %Y")`:`!v g:snips_author`: `!p snip.rv=get_comment_format()[2]`
+`!p snip.rv=get_comment_format()[2]` $0
 endsnippet
 
 snippet uuid "Random UUID" w
 `!p if not snip.c: import uuid; snip.rv = uuid.uuid4()`
 endsnippet
 
+snippet shebang "shebang line" b
+#!/usr/bin/env ${1:bash}
+$0
+endsnippet
 # vim:ft=snippets:

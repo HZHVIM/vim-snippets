@@ -93,17 +93,31 @@ public:
 #endif /* $2 */
 endsnippet
 
+snippet cm "Basic c++ doxygen comment block" b
+/**
+ * $1
+ */$0
+endsnippet
+
+snippet fnd "Basic c++ doxygen function description" b
+/**
+ * @brief: ${1:brief}
+ *
+ * @param: ${2:param}
+ *
+ * @return: ${3:return}
+ */$0
+endsnippet
 
 snippet fnc "Basic c++ doxygen function template" b
 /**
-* @brief: ${4:brief}
-*
-* @param: `!p write_docstring_args(t[3],snip)`
-*
-* @return: `!p snip.rv = t[1]`
-*/
-${1:ReturnType} ${2:FunctionName}(${3:param})
-{
+ * @brief: ${4:brief}
+ *
+ * @param: `!p write_docstring_args(t[3],snip)`
+ *
+ * @return: `!p snip.rv = t[1]`
+ */
+${1:ReturnType} ${2:FunctionName}(${3:param}) {
 	${0:FunctionBody}
 }
 endsnippet

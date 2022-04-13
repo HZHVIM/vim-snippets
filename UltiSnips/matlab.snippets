@@ -10,8 +10,7 @@ end
 endsnippet
 
 snippet clc "class with constructor" b
-classdef ${1:`!p
-snip.rv = snip.basename or "class_name"`} 
+classdef ${1:`!p snip.rv = snip.basename or "class_name"`}
 	properties
 		${2}
 	end
@@ -20,5 +19,15 @@ snip.rv = snip.basename or "class_name"`}
 			${4}
 		end${0}
 	end
+end
+endsnippet
+
+snippet fun "function with constructor" b
+function [${3}] = ${1:`!p snip.rv = snip.basename or "class_name"`}(${2})
+% Description: ${4}
+% Input: $2
+% Output: $3
+
+	${0}
 end
 endsnippet

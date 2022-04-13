@@ -88,10 +88,10 @@ snippet pinout
 snippet pinin
 	pinMode(${1}, INPUT);
 # digitalWrite HIGH
-snippet dwHigh
+snippet dwh
 	digitalWrite(${1}, HIGH);
 # digitalWrite LOW
-snippet dwLow
+snippet dwl
 	digitalWrite(${1}, LOW);
 # digitalRead
 snippet dr
@@ -114,8 +114,10 @@ snippet sp
 # serial.println
 snippet sl
 	Serial.println(${1});
-
-
+# serial buffer print
+snippet sbp
+	sprintf(serial_output_buffer, "${1}");
+	Serial.print(serial_output_buffer);
 # delay
 snippet dl
 	delay(${1});

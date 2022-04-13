@@ -132,7 +132,9 @@ endsnippet
 
 snippet Cfig "Centered figure environment" b
 \begin{center}
-	\includegraphics[width=${1:0.8}\linewidth]{${2:1}${3:.eps}}$0
+	\includegraphics[width=${1:0.8}\linewidth]{${2:1}${3:.eps}}
+	\captionof{subfigure}{${4:subcaption}}
+	\captionof{figure}{${5:caption}}$0
 \end{center}
 endsnippet
 
@@ -142,6 +144,10 @@ endsnippet
 
 snippet ips "include pages" b
 \includepdf[pages={$1}, pagecommand={$2}]{${3:scan}.pdf}$0
+endsnippet
+
+snippet trim "Trim graphics" w
+trim={${1:0}cm, ${2:0}cm, ${3:0}cm, ${4:0}cm}, clip, $0
 endsnippet
 
 snippet en "Enumerate" bs
@@ -181,43 +187,49 @@ $0
 endsnippet
 
 snippet sec "Section"
-\section{${1:${VISUAL:section name}}}%
+% sec:$1 {{{1 %
+\section{${1:${VISUAL:section name}}}
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 $0
+% sec:$1 1}}} %
 endsnippet
 
 snippet sec* "Section"
-\section*{${1:${VISUAL:section name}}}%
+% sec:$1 {{{1 %
+\section*{${1:${VISUAL:section name}}}
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
+% sec:$1 1}}} %
 endsnippet
 
 
 snippet sub "Subsection"
-\subsection{${1:${VISUAL:subsection name}}}%
+% sub:$1 {{{2 %
+\subsection{${1:${VISUAL:subsection name}}}
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 $0
+% sub:$1 2}}} %
 endsnippet
 
 snippet sub* "Subsection"
-\subsection*{${1:${VISUAL:subsection name}}}%
+\subsection*{${1:${VISUAL:subsection name}}}
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
 endsnippet
 
 snippet ssub "Subsubsection"
-\subsubsection{${1:${VISUAL:subsubsection name}}}%
+\subsubsection{${1:${VISUAL:subsubsection name}}}
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 $0
 endsnippet
 
 snippet ssub* "Subsubsection"
-\subsubsection*{${1:${VISUAL:subsubsection name}}}%
+\subsubsection*{${1:${VISUAL:subsubsection name}}}
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 ${0}
@@ -273,8 +285,13 @@ ${2:${VISUAL:code}}
 $0
 endsnippet
 
-snippet mcol "Multicol" b
-\begin{multicols}[${1:2}]
+snippet vs "vspace" b
+\vspace*{${1:1}cm}
+$0
+endsnippet
+
+snippet mcol "Multicol"
+\begin{multicols}{${1:2}}
 $0
 \end{multicols}
 endsnippet
@@ -283,4 +300,80 @@ snippet cb "Column Break" b
 \columnbreak
 $0
 endsnippet
+
+snippet pcode "Pseudo code block" b
+\begin{algorithm}[H] % H to stop floating
+\caption{${1:Algorithm Name}}
+\label{alg:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\begin{algorithmic}[1] % 1 gives every line an index
+\Procedure{${3:Function Name}}{${4:variables}}
+$0
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+endsnippet
+
+snippet comment "Comment block" b
+\begin{comment}
+${0:${VISUAL}}
+\end{comment}
+endsnippet
+
+snippet frame "Beamer frame" b
+\begin{frame}{${1:Title}}
+$0
+\end{frame}
+endsnippet
+
+snippet ,f "frac" Ai
+\frac{${1}}{${2}}${0}
+endsnippet
+
+snippet ,2 "squareroot" Ai
+\sqrt{${1}}${0}
+endsnippet
+
+snippet __ "null" Ai
+_{${1}}${0}
+endsnippet
+
+snippet ^^ "null" Ai
+^{${1}}${0}
+endsnippet
+
+snippet $$ "null" Ais
+$${1}$${0}
+endsnippet
+
+# snippet "(\s)?\$\$" "null" Ars
+# `!p snip.rv = '\n' if match.group(1) is not None else ''`$${1}$
+# ${0}
+# endsnippet
+
+snippet mp "mini page"
+\begin{minipage}{${1}\linewidth}
+	${0:${VISUAL}}
+\end{minipage}
+endsnippet
+
+snippet "(\w+)?ev" "environment" br
+\begin{`!p
+tmp = match.group(1) if match.group(1) is not None else "something"
+snip.rv = tmp`}
+	${0:${VISUAL}}
+\end{`!p snip.rv = tmp`}
+endsnippet
+
+snippet "(\w+)?cm" "command" r
+\\`!p
+tmp = match.group(1) if match.group(1) is not None else "something"
+snip.rv = tmp`{$0}
+endsnippet
+
+snippet bib "include reference" b
+% \nocite{*}
+% \bibliography{reference}{}
+% \bibliographystyle{ieeetr}
+endsnippet
+
 # vim:ft=snippets:

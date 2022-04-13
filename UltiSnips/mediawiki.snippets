@@ -4,10 +4,24 @@ extends html
 extends tex
 
 snippet math "<math>" w
-<math>$1</math>
+<math>$1</math>$0
 endsnippet
 
 snippet $$ "<math>" w
-<math>$1</math>
+<math>$1</math>$0
+endsnippet
+
+snippet bold "bold" w
+'''$1'''$0
+endsnippet
+
+snippet syn "<syntaxhighlight>" w
+<syntaxhighlight lang="${1:python}">
+$0
+</syntaxhighlight>
+endsnippet
+
+snippet redir "redirect page" w
+#REDIRECT [[${1:target_page}]]$0
 endsnippet
 
