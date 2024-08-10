@@ -175,24 +175,6 @@ snippet fig "Figure environment" bi
 \end{figure}
 endsnippet
 
-snippet enum "Enumerate" bi
-\begin{enumerate}
-	\item ${0:${VISUAL}}
-\end{enumerate}
-endsnippet
-
-snippet item "Itemize" bi
-\begin{itemize}
-	\item ${0:${VISUAL}}
-\end{itemize}
-endsnippet
-
-snippet case "cases" bi
-\begin{cases}
-	${0:${VISUAL}}
-\end{cases}
-endsnippet
-
 snippet abs "abstract environment" b
 \begin{abstract}
 	${0:${VISUAL}}
@@ -200,9 +182,9 @@ snippet abs "abstract environment" b
 endsnippet
 
 snippet tab "tabular / array environment" b
-	\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
-	$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
-	\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
+$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
+\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
 endsnippet
 
 pre_expand "create_matrix(snip)"
@@ -321,26 +303,6 @@ snippet srto "... Root" wi
 \sqrt[$1]{${2:${VISUAL}}}$0
 endsnippet
 
-snippet bf "Bold" wi
-\bf{${1:${VISUAL}}}$0
-endsnippet
-
-snippet it "Italic" wi
-\it{${1:${VISUAL}}}$0
-endsnippet
-
-snippet un "Underline" wi
-\un{${1:${VISUAL}}}$0
-endsnippet
-
-snippet rm "Text" wi
-\rm{${1:${VISUAL}}}$0
-endsnippet
-
-snippet itm "Item" wi
-\item ${0:${VISUAL}}
-endsnippet
-
 snippet ceil "Ceil" w
 \left\lceil $1 \right\rceil $0
 endsnippet
@@ -384,10 +346,6 @@ endsnippet
 
 snippet lrb "left\{ right\}" i
 \left\\{ ${1:${VISUAL}} \right\\} $0
-endsnippet
-
-snippet lr[ "left[ right]" i
-\left[ ${1:${VISUAL}} \right] $0
 endsnippet
 
 snippet lra "leftangle rightangle" wi
@@ -450,12 +408,12 @@ snippet != "Not Equal" w
 \neq
 endsnippet
 
-snippet <= "leq" Aw
-\le
+snippet <= "leq" w
+\le 
 endsnippet
 
-snippet >= "geq" Aw
-\ge
+snippet >= "geq" w
+\ge 
 endsnippet
 
 snippet nn "Tikz node" w
@@ -463,7 +421,7 @@ snippet nn "Tikz node" w
 $0
 endsnippet
 
-snippet lll "l" Aw
+snippet lll "l" w
 \ell
 endsnippet
 
@@ -479,7 +437,7 @@ snippet <! "normal" Aw
 \triangleleft
 endsnippet
 
-snippet "(\d|\w)+invs" "inverse" Awr
+snippet "((\d|\w)+)invs" "inverse" Awr
 `!p snip.rv = match.group(1)`^{-1}
 endsnippet
 
@@ -531,27 +489,6 @@ endsnippet
 
 snippet docls "Document Class" bA
 \documentclass{$1}$0
-endsnippet
-
-snippet tmplt "Template"
-\documentclass{article}
-
-\usepackage{import}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{xcolor}
-$1
-
-\newcommand{\incfig}[2][1]{%
-		\def\svgwidth{#1\columnwidth}
-		\import{./figures/}{#2.pdf_tex}
-}
-$2
-\pdfsuppresswarningpagegroup=1
-
-\begin{document}
-		$0
-\end{document}
 endsnippet
 
 
