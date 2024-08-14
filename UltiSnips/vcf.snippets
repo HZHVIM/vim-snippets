@@ -1,0 +1,45 @@
+# vCard
+
+# vCard Full
+snippet vcard "vCard Full"
+BEGIN:VCARD
+VERSION:3.0
+N:${1:surname};${2:givenname};${3:middlename};${4:prefixes};${5:suffixes}
+FN:${6:formatted name}
+NICKNAME:${7}
+TEL;type=${8|CELL,WORK,HOME|};type=VOICE${9:;type=pref}:${0}
+item1.TEL:+1 (000) 000-0000
+item1.X-ABLabel:CustomLabel
+BDAY:YYYY-MM-DD
+EMAIL;type=INTERNET;type=HOME|WORK:home@email.com
+item2.EMAIL;type=INTERNET:customlabel@email.com
+item2.X-ABLabel:CustomLabel
+URL;type=HOME|WORK:home.com
+item3.URL:customlabol.com
+item3.X-ABLabel:CustomLabel
+X-SOCIALPROFILE;type=twitter:twitterhandle
+item4.IMPP;X-SERVICE-TYPE=CustomIMLabel;type=pref:x-apple:customIMhandle
+item4.X-ABLabel:CustomIMLabel
+END:VCARD
+endsnippet
+
+# TEL
+snippet tel "Telephone"
+TEL;type=${1|CELL,WORK,HOME|};type=${2|VOICE,TEXT|}${3:;type=pref}:${0:${VISUAL}}
+endsnippet
+
+# Email
+snippet email "email"
+EMAIL;type=${1|WORK,HOME|};type=${2|VOICE,TEXT|}${3:;type=pref}:${0:${VISUAL}}
+endsnippet
+
+# Item
+snippet item "item"
+item${1:1}.${2|TEL,EMAIL|}:${0:${VISUAL}}
+item$1.X-ABLabel:${3}
+endsnippet
+
+# pref
+snippet pref ";type=pref" i
+;type=pref
+endsnippet
